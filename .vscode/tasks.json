@@ -1,0 +1,39 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "ceedling release",
+			"command": "ceedling",
+			"args": [
+				"release"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "Ceedling Release"
+		},
+		{
+			"type": "cppbuild",
+			"label": "clean",
+			"command": "rmdir",
+			"args": [
+				"/S",
+				"/Q",
+				"build"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "Clean"
+		}
+	]
+}
