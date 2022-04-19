@@ -16,14 +16,15 @@ Compile it and flash it to the start address of your MCU. Application must be li
 Jump into bootloader by writing 0xB00110AD to RAM address 0x10000000. This address can be changed in linker file.
 
 But before you compile:
-- Configure the CAN bus pins you want to use in drvCan.c
+- Configure the CAN bus pins you want to use in drvPins.c
 - Configure the baud rate, UDS receive and transmit ID in isotp_socket.c
 - Configure the flash layout in drvFlash.c
+- Add your own GPIO config to drvPins.c and remove sample code. For example add a blinking LED to main loop.
 
 Compile it with ceedling as your build toolchain.
 
-Optional Features
------------------
+Features
+--------
 - Flash is partitioned, so erasing flash will not erase any NVM parameter storage and log files.
 - Add your own GPIOs (see sample code in drvGpio.c) (remove sample code if not needed)
 - Add a crc algorithm to check validity of your application.
