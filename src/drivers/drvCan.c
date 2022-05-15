@@ -23,8 +23,8 @@ void drvCan_init(uint32_t baudrate, uint16_t filter)
     while ((CAN->MSR & 0x1) == 0);    // wait for init acknowledge
 
     uint32_t prescaler = sysClock/(baudrate*10) - 1;
-    uint32_t bitSegment1 = 7;
-    uint32_t bitSegment2 = 2;
+    uint32_t bitSegment1 = 7 - 1;   // content of hardware register has an offset. if 0 is written, 1 bitsegment is used
+    uint32_t bitSegment2 = 2 - 1;
 
     CAN->BTR = prescaler | (bitSegment1<<16) | (bitSegment2<<20);
 
