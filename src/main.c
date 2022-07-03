@@ -44,8 +44,9 @@ int main (void)
 
         // set stack pointer and jump to entry point
         register uint32_t stackPointer asm ("r13");     // todo: this is gnu extension, build with -std=gnu11 or change this line to inline assembler
+        register void(*startAddress)(void) = appStart[1];  // tell compiler to save this in register, as we are messing with stack pointer.
         stackPointer = *appStart;
-        ((void(*)())(appStart+1))();
+        startAddress();
         // happy compiler
         (void)stackPointer;
     }
